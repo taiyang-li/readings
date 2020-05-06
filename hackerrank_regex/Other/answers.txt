@@ -1,0 +1,25 @@
+Matching Specific String: $Regex_Pattern = 'hackerrank';
+Matching Word & Non-Word Character: $Regex_Pattern = '\w{3}\W\w{10}\W\w{3}';
+Matching Whitespace & Non-Whitespace Character: $Regex_Pattern = '(\S{2}\s){2}\S{2}';
+Matching Digits & Non-Digit Characters: $Regex_Pattern = '\d\d\D\d\d\D\d\d\d\d';
+Matching Anything But a Newline: $Regex_Pattern = '^...\....\....\....$';
+Capturing & Non-Capturing Groups: Regex_Pattern = r'(ok){3,}'	
+Alternative Matching: Regex_Pattern = r'^(Mr\.|Mrs\.|Ms\.|Dr\.|Er\.)[a-zA-Z]+$'
+Matching Word Boundaries: Regex_Pattern = r'\b[aeiouAEIOU][a-zA-Z]*\b'
+Matching Ending Items: Regex_Pattern = r'^[a-zA-Z]*s$'
+Matching One Or More Repetitions: Regex_Pattern = r'^\d+[A-Z]+[a-z]+$'
+Matching Zero Or More Repetitions: Regex_Pattern = r'^\d{2,}[a-z]*[A-Z]*$'
+Matching {x, y} Repetitions: Regex_Pattern = r'^\d{1,2}[a-zA-Z]{3,}(\.{1,3})?$'
+Matching {x} Repetitions: Regex_Pattern = r'^[02468a-zA-Z]{40}[\s13579]{5}$'
+Matching Character Ranges: $Regex_Pattern = '^[a-z][1-9][^a-z][^A-Z][A-Z]';
+Excluding Specific Characters: $Regex_Pattern = '^\D[^aeiou][^bdDF]\S[^AEIOU][^\.,]$';
+Matching Specific Characters: $Regex_Pattern = '^[123][012][0xs][03aA][xsu][\.,]$';
+Matching Start & End: $Regex_Pattern = '^\d\w{4}\.$';
+Negative Lookbehind: $Regex_Pattern = '(?<![aeiouAEIOU]).';
+Positive Lookbehind: $Regex_Pattern = '(?<=[13579])\d';
+Negative Lookahead: $Regex_Pattern = '(\S)(?!\1)';
+Positive Lookahead: $Regex_Pattern = 'o(?=oo)';
+Forward References: $Regex_Pattern = '^(tac){2}((tic)?tac)*(tic|tac)$';
+Branch Reset Groups: $Regex_Pattern = '^\d\d(\-|:|\-\-\-|\.)\d\d\1\d\d\1\d\d$';
+Backreferences To Failed Groups: Regex_Pattern = r"^\d\d(-?)\d\d\1\d\d\1\d\d$"
+Matching Same Text Again & Again: Regex_Pattern = r'^([a-z])(\w)(\s)(\W)(\d)(\D)([A-Z])([a-zA-Z])([aeiouAEIOU])(\S)\1\2\3\4\5\6\7\8\9\10$'

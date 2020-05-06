@@ -1,0 +1,6 @@
+[('div', ' class="portal" role="navigation" id=\'p-navigation\''), ('h3', ''), ('div', ' class="body"'), ('ul', ''), ('li', ' id="n-mainpage-description"'), ('a', ' href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z"'), ('li', ' id="n-contents"'), ('a', ' href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia"'), ('li', ' id="n-featuredcontent"'), ('a', ' href="/wiki/Portal:Featured_content" title="Featured content  the best of Wikipedia"'), ('li', ' id="n-currentevents"'), ('a', ' href="/wiki/Portal:Current_events" title="Find background information on current events"'), ('li', ' id="n-randompage"'), ('a', ' href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x"'), ('li', ' id="n-sitesupport"'), ('a', ' href="//donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us"')]
+a:accesskey,href,title
+div:class,id,role
+h3:
+li:id
+ul:

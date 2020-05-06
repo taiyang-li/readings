@@ -1,0 +1,60 @@
+59
+<!DOCTYPE html><html xmlns:fb="http://ogp.me/ns/fb#" itemtype="http://schema.org"><head><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=IE7"><meta name="fragment" content="!"><meta name="robots" content="NOODP"><meta charset="utf-8"><meta property="og:title" content="Coursera"><meta property="og:type" content="website"><meta property="og:image" content="http://s3.amazonaws.com/coursera/media/Coursera_Computer_Narrow.png"><meta property="og:url" content="https://www.coursera.org/"><meta property="og:site_name" content="Coursera"><meta property="og:locale" content="en_US"><meta property="og:description" content="Take free online classes from 80+ top universities and organizations. Coursera is a social entrepreneurship company partnering with Stanford University, Yale University, Princeton University and others around the world to offer courses online for anyone to take, for free. We believe in connecting people to a great education so that anyone around the world can learn without limits."><meta property="fb:admins" content="727836538,4807654"><meta property="fb:app_id" content="274998519252278"><meta name="description" content="Take free online classes from 80+ top universities and organizations. Coursera is a social entrepreneurship company partnering with Stanford University, Yale University, Princeton University and others around the world to offer courses online for anyone to take, for free. We believe in connecting people to a great education so that anyone around the world can learn without limits."><meta name="image" content="http://s3.amazonaws.com/coursera/media/Coursera_Computer_Narrow.png"><title>Coursera.org</title><link href="https://d2wvvaown1ul17.cloudfront.net/site-static/833dbbf2c3e12bef591fc79ea3aec8e63a64e5dc/css/home.css" rel="stylesheet" type="text/css"></head><body><div id="fb-root"></div><div id="origami"><div style="position:absolute;top:0px;left:0px;width:100%;height:100%;background:#f5f5f5;padding-top:5%;"><div id="coursera-loading-nojs" style="text-align:center; margin-bottom:10px;display:none;">Please use a <a href="/browsers">modern browser </a> with JavaScript enabled to use Coursera.</div><div><span id="coursera-loading-js" style="display: none; padding-left:45%">loading &nbsp;&nbsp;<img src="https://d2wvvaown1ul17.cloudfront.net/site-static/images/icons/loading.gif"></span></div><noscript><div style="text-align:center; margin-bottom:10px;">Please use a <a href="/browsers">modern browser </a> with JavaScript enabled to use Coursera.</div></noscript></div></div><!--[if gte IE 8]><script>document.getElementById("coursera-loading-js").style.display = 'block';</script><![endif]-->
+<!--[if lte IE 7]><script>document.getElementById("coursera-loading-nojs").style.display = 'block';
+window._204 = window._204 || [];
+window._gaq = window._gaq || [];
+
+window._gaq.push(
+    ['_setAccount', 'UA-28377374-1'],
+    ['_setDomainName', window.location.hostname],
+    ['_setAllowLinker', true],
+    ['_trackPageview', window.location.pathname]);
+
+window._204.push(
+  ['client', 'home'],
+  {key:"pageview", value:window.location.pathname});
+  </script><script src="https://eventing.coursera.org/204.min.js"></script><script src="https://ssl.google-analytics.com/ga.js"></script><![endif]-->
+<!--[if !IE]> --><script>document.getElementById("coursera-loading-js").style.display = 'block';</script><!-- <![endif]--><script type="text/javascript" src="https://d2wvvaown1ul17.cloudfront.net/site-static/833dbbf2c3e12bef591fc79ea3aec8e63a64e5dc/js/core/require.js"></script><script type="text/javascript" data-baseurl="https://d2wvvaown1ul17.cloudfront.net/site-static/833dbbf2c3e12bef591fc79ea3aec8e63a64e5dc/" data-version="833dbbf2c3e12bef591fc79ea3aec8e63a64e5dc" data-timestamp='1378340485294' data-debug='0' data-locale="" id="_require">if(document.getElementById("coursera-loading-js").style.display == 'block') {
+  (function(el) {
+     // prevent throw
+     require.onError = function(err) {
+       window._204 = window._204 || [];
+       window._204.push({key: 'requireErr', value: err});
+     };
+
+     require.config({
+       enforceDefine: true,
+       waitSeconds: 14,
+       baseUrl: el.getAttribute("data-baseurl"),
+       urlArgs: el.getAttribute("data-debug") == "1" ? "v=" + el.getAttribute("data-timestamp") : "",
+       shim: {
+          "underscore": {
+             exports: '_'
+          },
+
+          "backbone": {
+             deps: ['underscore', 'jquery'],
+             exports: 'Backbone'
+          }
+       },
+       paths: {
+          "jquery":       "js/core/jquery",
+          "underscore":   "js/core/underscore",
+          "backbone":     "js/core/backbone",
+          "i18n": "js/core/i18n",
+          "pages/home/models/user.json": "empty:"
+       },
+       callback: function() {
+         require(["pages/home/routes"]); // bootup coursera
+       },
+       config: {
+         i18n: {
+           locale: el.getAttribute("data-locale") || (window.localStorage ? localStorage.getItem("locale") : '')
+         }
+       }
+     });
+  })(document.getElementById("_require"));
+}
+</script><script type="text/javascript">define("pages/home/models/user.json", [], function(){
+  return {"last_name": "", "website_twitter": "", "full_name": "Prashant Bhattacharji", "bio": "Software Engineer. Got to work in amazing organizations like Factual.com, Microsoft Redmond and Lehman Brothers India.", "identity_verified": false, "photo": "", "work_status": 3, "birthday_day": 4, "signature_track": null, "website_facebook": "", "timezone": "America/Los_Angeles", "id": 41342, "website_linkedin": "http://linkedin.com/in/prashantbhattacharji", "location_lat": "17.39", "email_address": "prashbhatta@gmail.com", "location_lng": "78.49", "work_opt_in_all_courses": false, "location_city": "Hyderabad", "first_name": "", "display_name": "Prashant Bhattacharji", "location_country": "IN", "privacy": 100, "work_location_lat": "17.39", "photo_120": "", "locale": "en_US", "is_superuser": false, "location": "Hyderabad, Andhra Pradesh, India", "work_location_country": "IN", "website_gplus": "", "birthday_month": 2, "work_company_medium": true, "work_company_small": true, "website": "http://www.thelearningpoint.net/", "website_github": "", "resume": "http://coursera-placement-resumes.s3.amazonaws.com/26/68103f560dd49e01dcab6cbc4761f6/PrashantBhattacharji.pdf", "work_location_city": "Hyderabad", "work_remote": true, "work_salary": 125000, "groups": [], "work_company_large": true, "work_location_state": "Andhra Pradesh", "birthday_year": 1984, "location_state": "Andhra Pradesh", "work_location": "Hyderabad, Andhra Pradesh, India", "work_agree": true, "work_location_lng": "78.49", "gender": 2, "work_relocate": true, "photo_60": "", "is_staff": false, "photo_24": "", "work_skills": "Java,Ruby,Artificial Intelligence,Big Data,text mining", "work_title": "Software Engineer", "work_authorization": false, "external_id": "e63e67d1137d1af5c8f2967ffc339906", "education_highest_level": 3};
+});</script></body></html>

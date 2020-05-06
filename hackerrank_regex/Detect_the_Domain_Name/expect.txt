@@ -1,0 +1,1 @@
+coursera-placement-resumes.s3.amazonaws.com;coursera.org;d2wvvaown1ul17.cloudfront.net;eventing.coursera.org;linkedin.com;ogp.me;s3.amazonaws.com;schema.org;ssl.google-analytics.com;thelearningpoint.net

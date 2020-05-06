@@ -1,0 +1,111 @@
+
+/**
+ * Jerry Ma
+ * B.java
+ * Solution received by HR for the InternCup contest
+ */
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    static BufferedReader cin;
+    static StringTokenizer tk;
+    public static String token () throws IOException {
+        try {
+            while (!tk.hasMoreTokens())
+                tk = new StringTokenizer(cin.readLine());
+            return tk.nextToken();
+        }
+        catch (Exception e) {
+        }
+        return null;
+    }
+    public static int gInt () throws IOException {
+        return Integer.parseInt(token());
+    }
+    public static long gLong () throws IOException {
+        return Long.parseLong(token());
+    }
+    public static double gDouble () throws IOException {
+        return Double.parseDouble(token());
+    }
+    public static void init () {
+        cin = new BufferedReader(new InputStreamReader(System.in));
+        tk = new StringTokenizer("");
+    }
+    public static void quit () throws IOException {
+        System.out.flush();
+        System.exit(0);
+    }
+    static int n;
+    static String [] lines = new String[10];
+    static String [][] text = new String[10][1005];
+    static int [][] starts = new int[10][1005];
+    static int [][] ends = new int[10][1005];
+    static int [] lens = new int[10];
+    public static String search (String acr) {
+        //System.err.printf("Acronym %s\n", acr);
+        int acrl = acr.length();
+        char prefix[] = new char[20];
+        int dp[] = new int[20];
+        String answer = "wtf";
+        double score = 0;
+        for (int i = 0; i < n; i ++) {
+            //System.err.printf("  searching %dth snippet with %d words\n", i, lens[i]);
+            for (int start = 0; start < lens[i]; start ++) {
+                if (Character.toUpperCase(text[i][start].charAt(0)) != acr.charAt(0)) {
+                    continue;
+                }
+                System.err.printf("    starting %s\n", text[i][start]);
+                for (int add = 0; add <= 15; add ++) {
+                    dp[add] = 0;
+                }
+                int matching = 0;
+                for (int add = 0; add < Math.min(15, lens[i] - start); add ++) {
+                    char pref = prefix[add] = Character.toUpperCase(text[i][start + add].charAt(0));
+                    for (int j = acrl - 1; j >= 0; j --) {
+                        if (pref == acr.charAt(j)) {
+                            dp[j + 1] = Math.max(dp[j + 1], dp[j] + 1);
+                        } else {
+                            dp[j + 1] = Math.max(dp[j + 1], dp[j]);
+                        }
+                        matching = Math.max(matching, dp[j + 1]);
+
+                    }
+                    double newScore = matching * 1.0 / (Math.max(acrl, add + 1) + (add + 1) / 90.0);
+                    System.err.printf("      %d %f\n", matching, newScore);
+                    if (newScore > score && pref == acr.charAt(acrl - 1)) {
+                        //System.err.printf("FOUND\n");
+                        score = newScore;
+                        answer = lines[i].substring(starts[i][start], ends[i][start + add]);
+                        //System.err.println(answer);
+                    }
+                }
+            }
+        }
+        return answer;
+    }
+    public static void main (String [] args) throws IOException {
+        init();
+        n = Integer.parseInt(cin.readLine());
+        for (int i = 0; i < n; i ++) {
+            String str = lines[i] = cin.readLine() + " ";
+            int prevChar = 0;
+            for (int j = 0; j < str.length(); j ++) {
+                if (!Character.isLetter(str.charAt(j)) && str.charAt(j) != '\'') {
+                    if (j > prevChar) {
+                        text[i][lens[i]] = str.substring(prevChar, j);
+                        starts[i][lens[i]] = prevChar;
+                        ends[i][lens[i] ++] = j;
+                    }
+                    prevChar = j + 1;
+                }
+            }
+        }
+        for (int i = 0; i < n; i ++) {
+            System.out.println(search(cin.readLine().toUpperCase()));
+        }
+        quit();
+    }
+}
