@@ -1,0 +1,21 @@
+#!/usr/bin/expect
+
+trap {
+    set rows [stty rows]
+    set cols [stty columns]
+    stty rows $rows columns $cols < $spawn_out(slave,name)
+} WINCH
+
+
+if { $argc != 2 } {  
+    send_user "Usage: host password\n"  
+    exit  
+}  
+
+set host [lindex $argv 0]
+set password [lindex $argv 1]
+spawn ssh XXXX@YYYY
+set timeout 30
+expect "*ssl*" {send "ssh $host \r"}
+expect "*password*" {send "$password\r"}
+interact

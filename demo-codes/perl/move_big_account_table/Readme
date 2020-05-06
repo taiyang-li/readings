@@ -1,0 +1,21 @@
+为了将orable中的cpc.big_account_table表导入到mysql中，写了一下perl脚本
+modify.pl
+gen_sql.pl
+
+
+操作步骤如下所示：
+1. 在pl/sql中将oracle库中的cpc.big_account_table表中的数据以csv格式进行导出, 命名为big_account_table.csv
+
+2. 执行modify.pl脚本,   ./modify.pl
+   输入big_account_table.csv  输出modified_big_account_table.csv
+   其功能是对文件中的hades server names 进行修改
+	hades.*.4.server -->  hades.*.1.server
+	hades.*.5.server --> hades.*.2.server
+	hades.*.6.server --> hades.*.3.server
+
+3. 执行gen_sql.pl脚本， ./gen_sql.pl
+   输入modified_big_account_table.csv
+   输出 import.sql
+   其功能是在modified_big_account_table.csv中数据的基础上，生成插入mysql库中base_msg.big_account_table表的sql脚本
+
+4. 在mysql库base_msg中执行import.sql，至此，已经将oracle中big_account_table表中输入全部导入到mysql中。

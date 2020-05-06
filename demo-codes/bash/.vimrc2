@@ -1,0 +1,94 @@
+set nu
+
+behave mswin
+
+syntax on
+
+set si
+
+set nowritebackup
+set nocompatible
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set cindent
+" set fileencodings=gbk,utf-8,cp936,cp950,latin1
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+" set encoding=gbk
+
+"括号自动匹配功能:
+":inoremap ( ()<ESC>i
+":inoremap ) <c-r>=ClosePair(')')<CR>
+":inoremap { {<CR>}<UP><ESC>A
+":inoremap } <c-r>=ClosePair('}')<CR>
+":inoremap [ []<ESC>i
+":inoremap ] <c-r>=ClosePair(']')<CR>
+
+function ClosePair(char)
+if getline('.')[col('.')-1]==a:char
+return "\<Right>"
+else 
+return a:char
+endif
+endf
+
+set ruler
+set showcmd
+set incsearch
+set hlsearch
+set backspace=indent,eol,start
+
+"imap <C-j> <c-x><c-p>
+nmap <C-l> <c-o>
+nnoremap <C-k> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nmap <C-k> <c-]>
+nmap <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q
+nmap <F11> :YcmDiags<CR>
+nmap <F10> :set mouse=a<CR>
+nmap <F9> :set mouse-=a<CR>
+nmap <F6> :TlistToggle<CR> 
+
+set ruler
+
+set foldmethod=marker
+
+"let g:SuperTabDefaultCompletionType="context" 
+"let g:SuperTabDefaultCompletionType="<c-x><c-o>"
+"let g:SuperTabRetainCompletionType=2
+
+"set nocp
+filetype plugin indent on
+
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Show_One_File=1
+
+"set cursorline
+
+map <F5> :Dox<RETURN><ESC>
+map <F7> :NERDTreeToggle<RETURN>
+imap <F7> :NERDTreeToggle<RETURN>
+let g:NERDTreeWinPos="right"
+set ai
+
+"let OmniCpp_SelectFirstItem = 2
+"set tags+=~/.vim/stl_tags
+"set tags+=~/.vim/linux_tags
+map <F8> :set encoding=utf-8<RETURN>:set fileencoding=utf-8<RETURN>
+
+let g:ycm_global_ycm_extra_conf = '/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_key_invoke_completion='<C-p>'
+set completeopt=longest,menu
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+"inoremap <C-N> <C-Space>
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_complete_in_comments = 0
+let g:ycm_complete_in_strings = 0
+let g:ycm_min_num_of_chars_for_completion = 2
+

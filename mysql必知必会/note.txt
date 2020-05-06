@@ -1,0 +1,74 @@
+1. 了解数据库和表
+show databases;
+show tables;
+show columns from customers;
+desc customers;
+show status;   -- 显示服务器状态
+show grants;   -- 显示用户权限
+show errors;    -- 显示服务器错误
+show warnings;  -- 显示服务器警告
+
+2. 通配符
+select * from seat where student like 'a%';   -- 注意%不区分大小写
+select * from seat where student like '_b%';  -- 下划线表示一个字符
+
+3. 正则表达式
+select * from seat where student regexp '^[a-zA-Z]{5}$';  
+
+4. 计算字段
+1) concat 
+select concat(student, '-', class) from courses ;
+2) rtrim 
+select length(rtrim(class)) from courses;
+ 
+5. 函数
+1) 文本处理
+left	返回左边字符
+length	返回串长度
+locate	找到子串位置
+lower	将串变成小写
+ltrim	去除串左边的空格
+right	返回右边
+rtrim 	去除串右边的空格
+soundex	返回串的soundex值
+substring	返回子串
+upper	将串转换成小写
+2) 时间处理
+adddate	增加日期
+addtime	增加时间
+curdate	当前日期
+curtime	当前时间
+date		返回时间的日期部分
+datediff	计算两个日期之差
+date_format	返回格式化的日期字符串
+day		返回日期的天数部分
+dayofweek	返回星期几
+hour	返回时间的小时部分
+minute	返回时间的分钟部分
+month	返回时间的月份部分
+now		返回当前日期加时间
+second	返回当前时间的秒部分
+time		返回日期时间的时间部分
+year		返回日期的年份部分
+3) 数值处理
+abs
+cos
+exp
+pi
+rand
+sin
+sqrt
+tan
+4) 聚合
+avg
+count   注意，count(*)计算表的行数，count(字段)计算该字段不为NULL的行数
+min 
+max
+sum 
+
+6. 分组 
+7. 视图
+create view XXX as 查询sql;  
+8. 存储过程
+9. 游标
+10. 触发器 
