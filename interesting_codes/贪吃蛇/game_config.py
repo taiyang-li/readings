@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+class GameConfig(object):
+    SCREEN_WIDTH = 1200
+    SCREEN_HEIGHT = 900
+    CELL_WIDTH = 20
+    CELL_HEIGHT = 20
+    COLUMN_NUM = 20
+    LINE_NUM = 40
+    GAME_AREA_WIDTH = CELL_WIDTH * COLUMN_NUM
+    GAME_AREA_HEIGHT = CELL_WIDTH * LINE_NUM
+    GAME_AREA_LEFT = (SCREEN_WIDTH - GAME_AREA_WIDTH) // 2
+    GAME_AREA_TOP = SCREEN_HEIGHT - GAME_AREA_HEIGHT - 50
+    EDGE_WIDTH = 5  # 游戏区域外框线宽度
+    EDGE_HEIGHT = 5
+    MARGIN_WIDTH = 40  # 游戏区域外框线与文字之间的间距
+    MARGIN_HEIGHT = 40
+    SCORE_LEFT = GAME_AREA_LEFT + GAME_AREA_WIDTH + MARGIN_WIDTH
+    SCORE_TOP = GAME_AREA_TOP
+    SCORE_SIZE = 28
+
+    EDGE_COLOR = (100, 100, 100)
+    BG_COLOR = (230, 230, 230)
+    SCORE_COLOR = (0, 0, 0)
+    SNAKE_COLOR = (0, 255, 128)
+    FRUIT_COLOR = (255, 128, 255)
+    TIMER_INTERVAL = 1000  # 最开始方块每个1000ms下降1行。
+    SCORE_PER_FRUIT = 10 # 每消除一行方块得到的分数
