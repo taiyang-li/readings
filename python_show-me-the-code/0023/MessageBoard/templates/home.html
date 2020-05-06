@@ -1,0 +1,64 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<form action="/mboard/index/" method="POST"> {% csrf_token %}
+    <h3>此处留言</h3>
+    <label>
+        <span>姓名 :</span>
+        <input id="name" type="text" name="name" class="error" placeholder="请输入您的姓名"/>
+    </label>
+
+    <label>
+        <span>邮箱 :</span>
+        <input id="email" type="email" name="email" placeholder="请输入邮箱地址"/>
+    </label>
+
+    <label>
+        <span>地址 :</span>
+        <input id="address" type="text" name="address" placeholder="请输入联系地址"/>
+    </label>
+
+    <label>
+        <span>留言 :</span>
+        <textarea id="message" name="message"  placeholder="请输入你的留言"></textarea>
+    </label>
+    <label>
+        <span>&nbsp;</span>
+        <input type="submit" class="button" value="提交"/>
+    </label>
+    <input type='hidden' name='csrfmiddlewaretoken' value='SfHkbL4feo1G00sJQtbO7TtLN4c2BUwa' />
+
+</form>
+
+<br>
+<hr>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+        <tr class="danger">
+            <th>用户</th>
+            <th>邮箱</th>
+            <th>地址</th>
+            <th>留言</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if message_list  %}
+        {% for item in message_list %}
+        <tr class="{% cycle 'active' 'success' 'warning' 'info' %}">
+            <td>{{ item.name }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.message }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="4">无数据</td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table> 
+
+{% endblock content %}
+

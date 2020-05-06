@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>留言板</title>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr class="danger">
+                    <th>用户</th>
+                    <th>邮箱</th>
+                    <th>地址</th>
+                    <th>留言</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if message_list  %}
+                {% for item in message_list %}
+                <tr class="{% cycle 'active' 'success' 'warning' 'info' %}">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.address }}</td>
+                    <td>{{ item.message }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">无数据</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table> 
+        <a class="btn btn-xs btn-info" href="/mboard/create/">去留言</a>
+    </body>
+</html>
