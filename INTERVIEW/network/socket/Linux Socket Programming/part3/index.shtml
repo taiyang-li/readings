@@ -1,0 +1,108 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <meta name="Author" content="Sean Walton">
+ <title>Part III Directory</title>
+</head>
+<body link="#FFFF00" vlink="#808000">
+<table cellpadding=0 cellspacing=0 border=0 width=800 bgcolor="#FFFFFF" background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+ <tr width="100%">
+  <td colspan=2 align=right valign=top height=100 background="http://www.linuxsocket.org/graphics/socket-template.jpg">
+   <font face="Arial,Helvetica" size=+2>Part III Directory</font><br>
+<!--#include virtual="/shared/updated.shtml" -->
+  </td>
+ </tr>
+ <tr bgcolor="#FFFFFF">
+  <td width="30%" align=left valign=bottom background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+<!--#include virtual="/shared/search.shtml" -->
+  </td>
+  <td width="70%" align=right background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+<!--#include virtual="/shared/menus.shtml" -->
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding=7>
+<tr>
+ <td colspan=3 align=center><font face="Arial,Helvetica" size=+2><u>Part III: Object Sockets</u></font></td>
+</tr>
+<tr>
+ <td valign="top" rowspan=11><font face="Arial,Helvetica" size=+1>12: Java Socket API</font></td>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/DatagramIO.java">DatagramIO.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Datagram messenger</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/SimpleEchoClient.java">SimpleEchoClient.java</font><br>
+  <font face="Arial,Helvetica"><a href="12 - The Java Socket API/SimpleEchoServer.java">SimpleEchoServer.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Client/server without I/O stream translation.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/EchoClient.java">EchoClient.java</font><br>
+  <font face="Arial,Helvetica"><a href="12 - The Java Socket API/EchoServer.java">EchoServer.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Client/server with I/O stream translation.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/ObjectReceiver.java">ObjectReceiver.java</font><br>
+  <font face="Arial,Helvetica"><a href="12 - The Java Socket API/ObjectSender.java">ObjectSender.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Sending and receiving objects.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/SimpleMulticastDestination.java">SimpleMulticastDestination.java</font><br>
+  <font face="Arial,Helvetica"><a href="12 - The Java Socket API/SimpleMulticastSource.java">SimpleMulticastSource.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Simple multicast example.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/SimplePeerDestination.java">SimplePeerDestination.java</font><br>
+  <font face="Arial,Helvetica"><a href="12 - The Java Socket API/SimplePeerSource.java">SimplePeerSource.java</font>
+ <td><font face="Arial,Helvetica" size=-1>Simple datagram example.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/MessageGroupWindow.java">MessageGroupWindow.java</font><br>
+  <font face="Arial,Helvetica"><a href="12 - The Java Socket API/MessageWindow.java">MessageWindow.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>GUI-based datagram/multicast examples.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/ThreadedEchoServer.java">ThreadedEchoServer.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Threaded echo server.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/WindowChat.java">WindowChat.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>GUI-based socket (TCP) messenger.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/ErrorDialog.java">ErrorDialog.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>General GUI error display.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="12 - The Java Socket API/IPv6Test.java">IPv6Test.java</font></td>
+ <td><font face="Arial,Helvetica" size=-1>IPv6-support verifier.</font></td>
+</tr>
+<tr>
+ <td valign="top" rowspan=6><font face="Arial,Helvetica" size=+1>13: C++ Socket Framework</font></td>
+ <td><font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/socket.cpp">socket.cpp</font><br>
+  <font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/socket.h">socket.h</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Entire C++ framework.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/echo-client.cpp">echo-client.cpp</font><br>
+  <font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/echo-server.cpp">echo-server.cpp</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Echo client/server example.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/broadcast-peer.cpp">broadcast-peer.cpp</font><br>
+  <font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/multicast-peer.cpp">multicast-peer.cpp</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Broadcast/multicast examples.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/peer-caller.cpp">peer-caller.cpp</font><br>
+  <font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/peer-replier.cpp">peer-replier.cpp</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Dual program example for datagrams.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="13 - C++ Socket Framework/peer.cpp">peer.cpp</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Peer-to-peer datagram example.</font></td>
+</tr>
+</table>
+<!--#include virtual="/shared/footer.shtml" -->
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <meta name="Author" content="Sean Walton">
+ <title>Part II Directory</title>
+</head>
+<body link="#FFFF00" vlink="#808000">
+<table cellpadding=0 cellspacing=0 border=0 width=800 bgcolor="#FFFFFF" background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+ <tr width="100%">
+  <td colspan=2 align=right valign=top height=100 background="http://www.linuxsocket.org/graphics/socket-template.jpg">
+   <font face="Arial,Helvetica" size=+2>Part II Directory</font><br>
+<!--#include virtual="/shared/updated.shtml" -->
+  </td>
+ </tr>
+ <tr bgcolor="#FFFFFF">
+  <td width="30%" align=left valign=bottom background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+<!--#include virtual="/shared/search.shtml" -->
+  </td>
+  <td width="70%" align=right background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+<!--#include virtual="/shared/menus.shtml" -->
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding=7>
+<tr>
+ <td colspan=3 align=center><font face="Arial,Helvetica" size=+2><u>Part II: The Server Perspective</u></font></td>
+</tr>
+<tr>
+ <td width=170 valign="top" rowspan=2><font face="Arial,Helvetica" size=+1>6: Streaming Server</font></td>
+ <td><font face="Arial,Helvetica"><a href="6 - Streaming Server/html-ls-server.c">html-ls-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Creates an HTML page from the directory listing.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="6 - Streaming Server/simple-server.c">simple-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Simple echo server.</font></td>
+</tr>
+<tr>
+ <td valign="top" rowspan=5><font face="Arial,Helvetica" size=+1>7: Multitasking</font></td>
+ <td><font face="Arial,Helvetica"><a href="7 - Multitasking/parent-child.c">parent-child.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Trivial task-creation example.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="7 - Multitasking/echo-process.c">echo-process.c</font><br>
+  <font face="Arial,Helvetica"><a href="7 - Multitasking/echo-thread.c">echo-thread.c</font><br>
+  <font face="Arial,Helvetica"><a href="7 - Multitasking/trivial-server.c">trivial-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Multitasked echo servers.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="7 - Multitasking/exec-server.c">exec-server.c</font><br>
+ <font face="Arial,Helvetica"><a href="7 - Multitasking/ls-server.c">ls-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Examples of servers that call exec().</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="7 - Multitasking/html-ls-server.c">html-ls-server.c</font><br>
+  <font face="Arial,Helvetica"><a href="7 - Multitasking/http-dir.c">http-dir.c</font><br>
+  <font face="Arial,Helvetica"><a href="7 - Multitasking/serverls.c">serverls.c</font></td>>
+ <td><font face="Arial,Helvetica" size=-1>Various multitasked ls or directory servers.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="7 - Multitasking/thread-mutex.c">thread-mutex.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Example showing threads with mutexes.</font></td>
+</tr>
+<tr>
+ <td valign="top" rowspan=2><font face="Arial,Helvetica" size=+1>8: IO Control</font></td>
+ <td><font face="Arial,Helvetica"><a href="8 - IO Control/demand-accept.c">demand-accept.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Simple on-demand servlet creator.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="8 - IO Control/echo-timeout.c">echo-timeout.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Implementation of a connection timeout.</font></td>
+</tr>
+<tr>
+ <td valign="top" rowspan=10><font face="Arial,Helvetica" size=+1>9: Performance Tips</font></td>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/bored-child.c">bored-child.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Example of servlets that terminate if not enough activity.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/capped-servlets.c">capped-servlets.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Creates servlets up to a spoecified point.  Keeps the host from overloading.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/fair-load.c">fair-load.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Balances the servlet load between tasks and select()s.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/heartbeat-client.c">heartbeat-client.c</font><br>
+  <font face="Arial,Helvetica"><a href="9 - Performance Tips/heartbeat-server.c">heartbeat-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Example of how to manually determine if a server or client drops out.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/preforking-servlets.c">preforking-servlets.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Creates tasks ahead of time in anticipation of a connection.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/servlet-chummer.c">servlet-chummer.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>An example to solve the dynamic connections and load problem.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/servlets-ondemand.c">servlets-ondemand.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Creates as many servlets as accepted connections.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/smart-select.c">smart-select.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Combines multitasking with select() system call.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/test-server.c">test-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>General server tester.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="9 - Performance Tips/urgent-receiver.c">urgent-receiver.c</font><br>
+  <font face="Arial,Helvetica"><a href="9 - Performance Tips/urgent-sender.c">urgent-sender.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Example of send and receiving urgent (out of band) messages.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica" size=+1>10: Robust Sockets</font></td>
+ <td><font face="Arial,Helvetica"><a href="10 - Robust Sockets/sigpipe-client.c">sigpipe-client.c</font><br>
+  <font face="Arial,Helvetica"><a href="10 - Robust Sockets/sigpipe-server.c">sigpipe-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Example of getting and capturing the EPIPE signal.</font></td>
+</tr>
+</table>
+<!--#include virtual="/shared/footer.shtml" -->
+</body>
+</html>

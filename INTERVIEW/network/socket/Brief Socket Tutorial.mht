@@ -1,0 +1,428 @@
+From: <ÓÉ Microsoft Internet Explorer 5 ±£´æ>
+Subject: Brief Socket Tutorial
+Date: Thu, 18 Oct 2007 17:57:08 +0800
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0010_01C811B0.4CFA0870"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.3198
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0010_01C811B0.4CFA0870
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://sage.mc.yu.edu/kbeen/teaching/networking/resources/sockets.html
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<?xml version=3D"1.0" encoding=3D"UTF-8"?><HTML lang=3Den =
+xml:lang=3D"en"=20
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>Brief Socket =
+Tutorial</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dutf-8"><LINK=20
+href=3D"http://sage.mc.yu.edu/kbeen/yu.css" type=3Dtext/css =
+rel=3Dstylesheet>
+<META content=3D"MSHTML 6.00.2900.3199" name=3DGENERATOR></HEAD>
+<BODY>
+<H1>A Brief Socket Tutorial</H1>
+<P>This page gives some examples and explanation of simple programs =
+performing=20
+TCP communication using sockets, in <A=20
+href=3D"http://sage.mc.yu.edu/kbeen/teaching/networking/resources/sockets=
+.html#cpp-sockets">C++</A>=20
+and <A=20
+href=3D"http://sage.mc.yu.edu/kbeen/teaching/networking/resources/sockets=
+.html#java-sockets">Java</A>.=20
+You may copy this code and modify it to your purposes. </P>
+<H2 id=3Dcpp-sockets>C++</H2>
+<P>Socket programming in C++ tends to be somewhat system dependent,=20
+unfortunately. The examples here work on Ubuntu Linux, and would =
+probably work=20
+on other Linuxes, and maybe even on other Unixes. For Windows help, try =
+the <A=20
+href=3D"http://msdn.microsoft.com/library/default.asp?url=3D/library/en-u=
+s/winsock/winsock/winsock_reference.asp">Winsock=20
+Reference</A> page. For the rest of this section I'll assume you're =
+using Unix,=20
+but the API in Windows is quite similar so this should be helpful for =
+Windows=20
+users too. </P>
+<P>Here are sample programs - client/server pairs for TCP and UDP. In =
+these=20
+programs, the client prompts the user for a line of text and sends it to =
+the=20
+server, which converts the line to upper case and sends it back.=20
+<UL>
+  <LI><A=20
+  =
+href=3D"http://sage.mc.yu.edu/kbeen/teaching/networking/resources/tcp-ser=
+ver.cc">tcp-server.cc</A>=20
+
+  <LI><A=20
+  =
+href=3D"http://sage.mc.yu.edu/kbeen/teaching/networking/resources/tcp-cli=
+ent.cc">tcp-client.cc</A>=20
+  </LI></UL>
+<UL>
+  <LI><A=20
+  =
+href=3D"http://sage.mc.yu.edu/kbeen/teaching/networking/resources/udp-ser=
+ver.cc">udp-server.cc</A>=20
+
+  <LI><A=20
+  =
+href=3D"http://sage.mc.yu.edu/kbeen/teaching/networking/resources/udp-cli=
+ent.cc">udp-client.cc</A>=20
+  </LI></UL>Below are descriptions of the steps taken by the TCP =
+programs; the UDP=20
+programs are similar.=20
+<P></P>
+<P>To compile the TCP server, for example, do <PRE>g++ -o tcp-server =
+tcp-server.cc
+</PRE>This will put the executable in the file <CODE>tcp-server</CODE>. =
+If you=20
+want to call it something else, use <CODE>-o foo</CODE>, or whatever, =
+instead of=20
+<CODE>-o tcp-server</CODE>.=20
+<P></P>
+<P>There are comments in the source that explain a lot of it, in =
+addition to the=20
+explanations on this page. Keep in mind that you do not need to =
+understand every=20
+detail to use this code. There are some details that I still do not =
+understand.=20
+But so long as you get the main idea of what is going on, you can just =
+copy the=20
+more obscure details as they appear in these examples. </P>
+<H3>Utility Routines</H3>
+<P>Here is a description of some utility routines that are used a lot in =
+the C++=20
+code.=20
+<UL class=3Dspaced>
+  <LI><CODE>htonl()</CODE> and <CODE>htons()</CODE>: Convert long =
+integer and=20
+  short integer (respectively) from host byte order (on x86 this is =
+Least=20
+  Significant Byte First) to standard network byte order (Most =
+Significant Byte=20
+  First).=20
+  <LI><CODE>ntohl()</CODE> and <CODE>ntohs()</CODE>: The opposite of=20
+  <CODE>htonl()</CODE> and <CODE>htons()</CODE> (see above); i.e., =
+convert=20
+  network byte order to host byte order.=20
+  <LI><CODE>inet_ntoa()</CODE>: Converts an IP address from binary form =
+to the=20
+  <Q>numbers and dots</Q> notation.=20
+  <LI><CODE>gethostbyname()</CODE>: Takes an IP address in <Q>numbers =
+and=20
+  dots</Q> notation, and returns a structure with various pieces of =
+information.=20
+  It's not really necessary to know what that structure is all about, =
+just that=20
+  it's needed when making the socket connection.=20
+  <LI><CODE>memset()</CODE> is not specific to sockets, but you might =
+not have=20
+  seen it before. It is defined in <CODE>&lt;string.h&gt;</CODE>, and it =
+is just=20
+  an efficient way to set all elements of an array to a given value. =
+</LI></UL>
+<P></P>
+<H3>The TCP Server</H3>
+<P>The TCP server goes through five (or six) main steps, as regards the =
+socket.=20
+<OL>
+  <LI>
+  <P>Create a socket, using the <CODE>socket()</CODE> function call: =
+<PRE>  listenSocket =3D socket(AF_INET, SOCK_STREAM, 0);
+  if (listenSocket &lt; 0) {
+    cerr &lt;&lt; "cannot create listen socket";
+    exit(1);
+  }
+</PRE><CODE>SOCK_STREAM</CODE> is a constant that indicates this will be =
+a TCP=20
+  (reliable) connection; use <CODE>SOCK_DGRAM</CODE> for (unreliable) =
+UDP=20
+  communication. Don't worry about the other parameters; they never =
+change.=20
+  <P></P>
+  <LI>
+  <P>Bind the socket to the port that clients will connect to: <PRE>  =
+serverAddress.sin_family =3D AF_INET;
+  serverAddress.sin_addr.s_addr =3D htonl(INADDR_ANY);
+  serverAddress.sin_port =3D htons(listenPort);
+ =20
+  if (bind(listenSocket,
+           (struct sockaddr *) &amp;serverAddress,
+           sizeof(serverAddress)) &lt; 0) {
+    cerr &lt;&lt; "cannot bind socket";
+    exit(1);
+  }
+</PRE>Don't worry about understanding all that serverAddress stuff. Just =
+
+  notice that <CODE>listenPort</CODE> is a variable with the port =
+number.=20
+  <P></P>
+  <LI>
+  <P>Wait for clients: <PRE>  listen(listenSocket, 5);
+</PRE>The second parameter is the <Q>backlog</Q>, or <Q>the maximum =
+length the=20
+  queue of pending connections may grow to</Q>, according to the Linux =
+man page.=20
+
+  <P></P>
+  <LI>
+  <P>Establish a connection with a client that requests one, using the=20
+  <CODE>accept()</CODE> function call: <PRE>    clientAddressLength =3D =
+sizeof(clientAddress);
+    connectSocket =3D accept(listenSocket,
+                           (struct sockaddr *) &amp;clientAddress,
+                           &amp;clientAddressLength);
+    if (connectSocket &lt; 0) {
+      cerr &lt;&lt; "cannot accept connection ";
+      exit(1);
+    }
+</PRE>This creates a <EM>new</EM> socket, which is used for this =
+particular=20
+  connection. The original socket may continue accepting more =
+connections, and=20
+  establishing new sockets for them, while this connection is still =
+active. (But=20
+  that would probably require the program to be multi-threaded....) =
+Multiple=20
+  sockets open on the same port will be distinguished by being connected =
+to=20
+  different (ip address, port) combinations on the client side.=20
+  <P></P>
+  <LI>
+  <P>Read and write over the socket using the <CODE>recv()</CODE> and=20
+  <CODE>send()</CODE> functions, respectively. Here is the whole =
+read/write loop=20
+  from the sample program: <PRE>    memset(line, 0x0, LINE_ARRAY_SIZE);
+    while (recv(connectSocket, line, MAX_MSG, 0) &gt; 0) {
+      cout &lt;&lt; "  --  " &lt;&lt; line &lt;&lt; "\n";
+
+      // Convert line to upper case.
+      for (i =3D 0; line[i] !=3D '\0'; i++)
+        line[i] =3D toupper(line[i]);
+
+      // Send converted line back to client.
+      if (send(connectSocket, line, strlen(line) + 1, 0) &lt; 0)
+        cerr &lt;&lt; "Error: cannot send modified data";
+
+      memset(line, 0x0, LINE_ARRAY_SIZE);  // set line to all zeroes
+    }
+</PRE>
+  <P></P>
+  <LI>
+  <P>Close the socket. Either the client or the server should close the =
+socket=20
+  at the end of communication. Only one needs to do it, and it doesn't =
+matter=20
+  which. In this example, the client does it (see below). </P></LI></OL>
+<P></P>
+<H3>The TCP Client</H3>
+<P>The TCP client goes through three (or four) main steps, as regards =
+the=20
+socket.=20
+<OL>
+  <LI>
+  <P>Create a socket, using the <CODE>socket()</CODE> function call: =
+<PRE>  socketDescriptor =3D socket(AF_INET, SOCK_STREAM, 0);
+  if (socketDescriptor &lt; 0) {
+    cerr &lt;&lt; "cannot create socket\n";
+    exit(1);
+  }
+</PRE><CODE>SOCK_STREAM</CODE> is a constant that indicates this will be =
+a TCP=20
+  (reliable) connection; use <CODE>SOCK_DGRAM</CODE> for (unreliable) =
+UDP=20
+  communication. Don't worry about the other parameters; they never =
+change.=20
+  <P></P>
+  <LI>
+  <P>Connect to the server, using the <CODE>connect()</CODE> function: =
+<PRE>  serverAddress.sin_family =3D hostInfo-&gt;h_addrtype;
+  memcpy((char *) &amp;serverAddress.sin_addr.s_addr,
+         hostInfo-&gt;h_addr_list[0], hostInfo-&gt;h_length);
+  serverAddress.sin_port =3D htons(serverPort);
+			=09
+  if (connect(socketDescriptor,
+              (struct sockaddr *) &amp;serverAddress,
+              sizeof(serverAddress)) &lt; 0) {
+    cerr &lt;&lt; "cannot connect\n";
+    exit(1);
+  }
+</PRE>Again, don't worry about most of the details. =
+<CODE>serverPort</CODE> is=20
+  the port that the server is listening on. The system will assign the =
+client an=20
+  arbitrary unused port number as the <Q>return address</Q>.=20
+  <P></P>
+  <LI>
+  <P>Read and write using <CODE>recv()</CODE> and <CODE>send()</CODE>,=20
+  respectively. This is essentially the same as for the server; see =
+above. </P>
+  <LI>
+  <P>Close the socket. <PRE>  close(socketDescriptor);
+</PRE>As mentioned above, it doesn't matter which of the client or =
+server=20
+  closes the socket.=20
+  <P></P></LI></OL>
+<P></P>
+<H2 id=3Djava-sockets>Java</H2>
+<P>Here is the source code for the Java examples:=20
+<UL>
+  <LI><A=20
+  =
+href=3D"http://sage.mc.yu.edu/kbeen/teaching/networking/resources/TCPServ=
+er.java">TCPServer.java</A>=20
+
+  <LI><A=20
+  =
+href=3D"http://sage.mc.yu.edu/kbeen/teaching/networking/resources/TCPClie=
+nt.java">TCPClient.java</A>=20
+  </LI></UL>
+<P></P>
+<H3>The Server</H3>
+<P>Here are the socket related steps on the server side:=20
+<OL>
+  <LI>
+  <P>Create a socket for listening for client connection requests on the =
+port=20
+  <CODE>port</CODE>: <PRE>      ServerSocket welcomeSocket =3D new =
+ServerSocket(port);
+</PRE>
+  <P></P>
+  <LI>
+  <P>Accept client connection, and create a new socket for handling that =
+
+  connection: <PRE>        Socket connectionSocket =3D =
+welcomeSocket.accept();
+</PRE>
+  <P></P>
+  <LI>
+  <P>Read and write the socket. This one is a little more involved, but =
+it is=20
+  pretty standard Java I/O. The socket-specific methods are=20
+  <CODE>getInputStream()</CODE> and <CODE>getOutputStream()</CODE> in =
+the=20
+  <CODE>Socket</CODE> class: <PRE>        BufferedReader inFromClient =
+=3D=20
+          new BufferedReader
+            (new InputStreamReader(connectionSocket.getInputStream()));
+        DataOutputStream outToClient =3D
+          new DataOutputStream(connectionSocket.getOutputStream());
+
+        String clientSentence =3D inFromClient.readLine();
+        while (clientSentence !=3D null) {
+          System.out.println("  -- " + clientSentence);
+          String capitalizedSentence =3D clientSentence.toUpperCase() + =
+'\n';
+          outToClient.writeBytes(capitalizedSentence);
+          clientSentence =3D inFromClient.readLine();
+        }
+</PRE>Note that the <CODE>writeBytes()</CODE> method of the=20
+  <CODE>DataOutputStream</CODE> method automatically converts Unicode to =
+ASCII=20
+  by dropping the high eight bits. And the =
+<CODE>InputStreamReader</CODE> class=20
+  handles converting bytes into (Unicode) characters.=20
+  <P></P>
+  <LI>
+  <P>Close the socket. As with C++, either the client or the server can =
+close=20
+  the socket. In this example, the client does it. </P></LI></OL>
+<P></P>
+<H3>The Client</H3>
+<P>Here are the socket related steps on the client side:=20
+<OL>
+  <LI>
+  <P>Create socket for connecting to host <CODE>serverHost</CODE> and =
+port=20
+  <CODE>serverPort</CODE>: <PRE>    Socket clientSocket =3D new =
+Socket(serverHost, serverPort);
+</PRE>
+  <P></P>
+  <LI>
+  <P>Read and write the socket. This is similar as for the server; see=20
+  discussion above. <PRE></PRE>
+  <P></P>
+  <LI>
+  <P>Close the socket: <PRE>    clientSocket.close();
+</PRE>
+  <P></P></LI></OL>
+<P></P>
+<H2>Comparison</H2>
+<P>In Java the code is much simpler and cleaner, and there are no =
+portability=20
+problems. But then, if you are going to do the assignments in Java, you =
+have to=20
+learn Java. Java documentation can be found <A=20
+href=3D"http://java.sun.com/j2se/1.4.1/docs/index.html">here</A>. I =
+especially=20
+find the <A =
+href=3D"http://java.sun.com/j2se/1.4.1/docs/api/index.html">API=20
+Specification</A> to be useful. </P>
+<HR>
+<SPAN class=3Dmodified>Last modified:
+<SCRIPT type=3Dtext/javascript>=0A=
+  document.write(document.lastModified);=0A=
+</SCRIPT>
+ </SPAN></BODY></HTML>
+
+------=_NextPart_000_0010_01C811B0.4CFA0870
+Content-Type: text/css;
+	charset="gb2312"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://sage.mc.yu.edu/kbeen/yu.css
+
+BODY {
+	BACKGROUND: white; MARGIN: 20px 20px 10px; COLOR: black; FONT-FAMILY: =
+sans-serif
+}
+P.indented {
+	MARGIN-LEFT: 2em
+}
+SPAN.modified {
+	FONT-SIZE: small
+}
+SPAN.booktitle {
+	FONT-STYLE: italic
+}
+SPAN.label {
+	FONT-WEIGHT: bold
+}
+SPAN.tentative {
+	COLOR: gray
+}
+SPAN.code {
+	FONT-WEIGHT: bold
+}
+SUB {
+	FONT-SIZE: x-small
+}
+SUP {
+	FONT-SIZE: x-small
+}
+OL {
+	LIST-STYLE-TYPE: decimal
+}
+OL OL {
+	LIST-STYLE-TYPE: lower-alpha
+}
+UNKNOWN {
+	MARGIN-TOP: 1em; MARGIN-BOTTOM: 1em
+}
+OL.upperalpha {
+	LIST-STYLE-TYPE: upper-alpha
+}
+OL.arabic {
+	LIST-STYLE-TYPE: decimal
+}
+SPAN.term {
+	FONT-WEIGHT: bold
+}
+
+------=_NextPart_000_0010_01C811B0.4CFA0870--

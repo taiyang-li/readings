@@ -1,0 +1,71 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <meta name="Author" content="Sean Walton">
+ <title>Part I Directory</title>
+</head>
+<body>
+<table cellpadding=0 cellspacing=0 border=0 width=800 bgcolor="#FFFFFF" background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+ <tr width="100%">
+  <td colspan=2 align=right valign=top height=100 background="http://www.linuxsocket.org/graphics/socket-template.jpg">
+   <font face="Arial,Helvetica" size=+2>Part I Directory</font><br>
+<!--#include virtual="/shared/updated.shtml" -->
+  </td>
+ </tr>
+ <tr bgcolor="#FFFFFF">
+  <td width="30%" align=left valign=bottom background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+<!--#include virtual="/shared/search.shtml" -->
+  </td>
+  <td width="70%" align=right background="http://www.linuxsocket.org/graphics/wave-background.jpg">
+<!--#include virtual="/shared/menus.shtml" -->
+  </td>
+ </tr>
+</table>
+<table width="100%" cellpadding=7>
+<tr>
+ <td valign="top" colspan=3 align=center><font face="Arial,Helvetica" size=+2><u>Part I: The Client Perspective</u></font></td>
+</tr>
+<tr>
+ <td width=170><font face="Arial,Helvetica" size=+1>1: Cookbook Client</font></td>
+ <td><font face="Arial,Helvetica"><a href="1 - Cookbook Client/simple-client.c">simple-client.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Open a port and read server's message.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica" size=+1>2: TCP IP</font></td>
+ <td><font face="Arial,Helvetica"><a href="2 - TCP IP/test-port-client.c">test-port-client.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>The Simple Client is expanded to include sending a message and selecting any port.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica" size=+1>3: IP Packets</font></td>
+ <td><font face="Arial,Helvetica"><a href="3 - IP Packets/snooper.c">snooper.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Listen to the packets on the network.</font></td>
+</tr>
+<tr>
+ <td valign="top" rowspan=5><font face="Arial,Helvetica" size=+1>4: Connectionless</font></td>
+ <td><font face="Arial,Helvetica"><a href="4 - Datagrams/connected-peer.c">connected-peer.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Create a connected datagram socket.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="4 - Datagrams/connectionless-receiver.c">connectionless-receiver.c</font><br>
+ <font face="Arial,Helvetica"><a href="4 - Datagrams/connectionless-sender.c">connectionless-sender.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Pass messages between programs.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="4 - Datagrams/http-client.c">http-client.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Display the reply to an HTTP request.</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="4 - Datagrams/ttcp-client.c">ttcp-client.c</font><br>
+ <font face="Arial,Helvetica"><a href="4 - Datagrams/ttcp-server.c">ttcp-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Send transaction TCP messages (T/TCP) between client and server (Linux does not yet support this protocol).</font></td>
+</tr>
+<tr>
+ <td><font face="Arial,Helvetica"><a href="4 - Datagrams/udp-reconnect.c">udp-reconnect.c</font><br>
+ <font face="Arial,Helvetica"><a href="4 - Datagrams/udp-server.c">udp-server.c</font></td>
+ <td><font face="Arial,Helvetica" size=-1>Demonstrates connecting and reconnecting using UDP.</font></td>
+</tr>
+</table>
+<!--#include virtual="/shared/footer.shtml" -->
+</body>
+</html>
