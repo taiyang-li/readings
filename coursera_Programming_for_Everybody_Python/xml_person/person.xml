@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<person>
+	<name>Chunk</name>
+	<phone type="int1">
+		+1 734 303 4456
+	</phone>
+	<email hide="yes"/>
+</person>
+
